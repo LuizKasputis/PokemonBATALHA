@@ -19,7 +19,7 @@ public class rinhaDeGalo {
 	public void IniciaBatalha() {
 		Scanner scanner = new Scanner(System.in);
 		Controller control = new Controller();
-		int acao1, atack1=0, acao2, atack2=0;
+		int acao1, atack1=0, acao2, atack2=0, troca1=0, troca2=0;
 		
 		while( ash.CheckPokes() && tresh.CheckPokes() ) {
 			Pokemon poke1 = ash.getPokemon();
@@ -29,25 +29,42 @@ public class rinhaDeGalo {
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+" Pokemon atual\n"+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
+			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual"+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
 			poke1.ListaAtaques();
 			System.out.println("\nTreinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao1 = scanner.nextInt();
+			
 			if(acao1 == 1) {
 				System.out.println("Selecione o ATCK");
 				atack1 = scanner.nextInt();
 				atack1--;
 			}
+			
+			if(acao1 == 2) {
+				ash.listaPokemons();
+				System.out.println("Selecione o Pokemon");
+				troca1 = scanner.nextInt();
+				troca1--;
+			}
+			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+" Pokemon atual\n"+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
+			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+"\n NUM potions "+ash.numPotions()+" EFECT 40 HP\n Pokemon atual"+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
 			poke2.ListaAtaques();
 			System.out.println("\nTreinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao2 = scanner.nextInt();
+			
 			if(acao2 == 1) {
 				System.out.println("Selecione o ATCK");
 				atack2 = scanner.nextInt();
 				atack2--;
+			}
+			
+			if(acao2 == 2) {
+				tresh.listaPokemons();
+				System.out.println("Selecione o Pokemon");
+				troca2 = scanner.nextInt();
+				troca2--;
 			}
 			
 			System.out.println("------------------------------------------------------------------------------");
@@ -63,7 +80,7 @@ public class rinhaDeGalo {
 						ataque atck = new ataque(tm, ash, tresh, atack1);
 						control.addEvent(atck);
 					}else if(acao1 == 2) {
-						TrocaPokemon troca = new TrocaPokemon(tm, ash);
+						TrocaPokemon troca = new TrocaPokemon(tm, ash, troca1);
 						control.addEvent(troca);
 					}else if(acao1 == 3) {
 						Fuga fuga= new Fuga(tm, ash);
@@ -78,7 +95,7 @@ public class rinhaDeGalo {
 						ataque atck = new ataque(tm, tresh, ash, atack2);
 						control.addEvent(atck);
 					}else if(acao2 == 2) {
-						TrocaPokemon troca = new TrocaPokemon(tm, tresh);
+						TrocaPokemon troca = new TrocaPokemon(tm, tresh, troca2);
 						control.addEvent(troca);
 					}else if(acao2 == 3) {
 						Fuga fuga= new Fuga(tm, tresh);
@@ -96,7 +113,7 @@ public class rinhaDeGalo {
 						ataque atck = new ataque(tm, tresh, ash, atack2);
 						control.addEvent(atck);
 					}else if(acao2 == 2) {
-						TrocaPokemon troca = new TrocaPokemon(tm, tresh);
+						TrocaPokemon troca = new TrocaPokemon(tm, tresh, troca2);
 						control.addEvent(troca);
 					}else if(acao2 == 3) {
 						Fuga fuga= new Fuga(tm, tresh);
@@ -111,7 +128,7 @@ public class rinhaDeGalo {
 						ataque atck = new ataque(tm, ash, tresh, atack1);
 						control.addEvent(atck);
 					}else if(acao1 == 2) {
-						TrocaPokemon troca = new TrocaPokemon(tm, ash);
+						TrocaPokemon troca = new TrocaPokemon(tm, ash, troca1);
 						control.addEvent(troca);
 					}else if(acao1 == 3) {
 						Fuga fuga= new Fuga(tm, ash);
@@ -132,7 +149,7 @@ public class rinhaDeGalo {
 					ataque atck = new ataque(tm, ash, tresh, atack1);
 					control.addEvent(atck);
 				}else if(acao1 == 2) {
-					TrocaPokemon troca = new TrocaPokemon(tm, ash);
+					TrocaPokemon troca = new TrocaPokemon(tm, ash, troca1);
 					control.addEvent(troca);
 				}else if(acao1 == 3) {
 					Fuga fuga= new Fuga(tm, ash);
@@ -147,7 +164,7 @@ public class rinhaDeGalo {
 					ataque atck = new ataque(tm, tresh, ash, atack2);
 					control.addEvent(atck);
 				}else if(acao2 == 2) {
-					TrocaPokemon troca = new TrocaPokemon(tm, tresh);
+					TrocaPokemon troca = new TrocaPokemon(tm, tresh, troca2);
 					control.addEvent(troca);
 				}else if(acao2 == 3) {
 					Fuga fuga= new Fuga(tm, tresh);
@@ -167,7 +184,7 @@ public class rinhaDeGalo {
 					ataque atck = new ataque(tm, tresh, ash, atack2);
 					control.addEvent(atck);
 				}else if(acao2 == 2) {
-					TrocaPokemon troca = new TrocaPokemon(tm, tresh);
+					TrocaPokemon troca = new TrocaPokemon(tm, tresh, troca2);
 					control.addEvent(troca);
 				}else if(acao2 == 3) {
 					Fuga fuga= new Fuga(tm, tresh);
@@ -182,7 +199,7 @@ public class rinhaDeGalo {
 					ataque atck = new ataque(tm, ash, tresh, atack1);
 					control.addEvent(atck);
 				}else if(acao1 == 2) {
-					TrocaPokemon troca = new TrocaPokemon(tm, ash);
+					TrocaPokemon troca = new TrocaPokemon(tm, ash, troca1);
 					control.addEvent(troca);
 				}else if(acao1 == 3) {
 					Fuga fuga= new Fuga(tm, ash);
@@ -223,7 +240,7 @@ public class rinhaDeGalo {
 			
 			if( atacante.turn() ) {
 				if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
-					System.out.println("O pokemon foi derrotado pelo "+ galoAtacante.Nome());
+					System.out.println("O pokemon"+galoAtacante.Nome()+" usou o ataque"+galoAtacante.NomeAtack(seleciona)+" e derrotou "+ galoAtacante.Nome());
 					atacado.MudaTurn(false);
 				}else {
 					System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
@@ -280,18 +297,20 @@ public class rinhaDeGalo {
 	
 	public class TrocaPokemon extends Event {
 		private Treinador trocador;
+		private int troca;
 		
-		public TrocaPokemon(long evenTime, Treinador trocando) {
+		public TrocaPokemon(long evenTime, Treinador trocando, int troca) {
 			super(evenTime);
 			trocador = trocando;
+			this.troca = troca;
 		}
 		
 		public void action() {
-			trocador.trocaPokemon();
+			trocador.trocaPokemon(troca);
 		}
 		
 		public String description() {
-			return "O "+ trocador.nome() +"trocou de pokemon para o"+ trocador.getPokemon().Nome();
+			return "O "+ trocador.nome() +"trocou de pokemon para o "+ trocador.getPokemon().Nome();
 		}
 		
 	}

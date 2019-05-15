@@ -25,6 +25,7 @@ public class Treinador {
 		this.pokeAtual = 0;
 		this.vivos = pokemons;
 		this.name= name;
+		this.itemAtual = 9;
 		this.turn = true;
 		CriaPokemons();
 		CriaItens();
@@ -44,14 +45,17 @@ public class Treinador {
 		if(!pokemons[pokeAtual].Defende(dano)){
 			vivos--;
 			if(vivos != 0)
-				trocaPokemon();
+				ProxPokemon();
 			return true;
 		}
 		return false;
 	}
 	
+	public void trocaPokemon(int troca){
+		this.pokeAtual = troca;
+	}
 	
-	public void trocaPokemon(){
+	public void ProxPokemon(){
 		if(pokeAtual == num_pokemons - 1)
 			pokeAtual = 0;
 		else
@@ -60,6 +64,15 @@ public class Treinador {
 			pokeAtual++;
 			if(pokeAtual == num_pokemons - 1)
 				pokeAtual = 0;
+		}
+	}
+	
+	public void listaPokemons() {
+		Pokemon aux;
+		for(int i=0; i<6; i++) {
+			aux = pokemons[i];
+			if(aux.Hp() != 0)
+				System.out.println(i+1+"-"+aux.Nome()+" HP - "+aux.Hp());
 		}
 	}
 	
@@ -101,5 +114,9 @@ public class Treinador {
 	
 	public boolean turn() {
 		return turn;
+	}
+	
+	public int numPotions() {
+		return itemAtual+1;
 	}
 }
