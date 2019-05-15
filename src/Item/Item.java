@@ -8,7 +8,7 @@ public class Item {
 	private boolean usado;
 	
 	public Item() {
-		 this.cura = rand.nextInt(50);
+		 this.cura = 40;
 		 this.usado = true;
 	}
 	
@@ -19,8 +19,8 @@ public class Item {
 	
 	public boolean checkItem() {
 		if(usado == true)
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 	
 	public int valorCura() {

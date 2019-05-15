@@ -61,14 +61,12 @@ public class Treinador {
 	}
 	
 	public void UsaItem() {
-		while(!itens[itemAtual].checkItem() && itemAtual < 10)
-			itemAtual++;
-		
 		
 		if(itens[itemAtual].checkItem()) {
 			System.out.println("A poção de "+ itens[itemAtual].valorCura() +" hp foi usada ");
 			int cura = itens[itemAtual].usarItem();
 			pokemons[pokeAtual].Cura(cura);
+			itemAtual++;
 		}else {
 			System.out.println("Não existem poções suficientes ");
 		}

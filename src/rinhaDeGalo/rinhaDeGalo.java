@@ -19,23 +19,26 @@ public class rinhaDeGalo {
 	public void IniciaBatalha() {
 		Scanner scanner = new Scanner(System.in);
 		Controller control = new Controller();
-		System.out.println("TO AQUI");
+		
 		while( ash.CheckPokes() && tresh.CheckPokes() ) {
 			Pokemon poke1 = ash.getPokemon();
 			Pokemon poke2 = tresh.getPokemon();
 			
-			System.out.println("Treinador "+ ash.nome() +" esta com o pokemon "+ poke1.Nome() + " com hp "+poke1.Hp()+ " com ataque "+poke1.Ataque()+" prioridade de ataque "+ poke1.Prioridade());
+			System.out.println("------------------------------------------------------------------------------");
+			
+			System.out.println("Treinador "+ ash.nome() +" esta com o pokemon "+poke1.Nome() + " com hp "+poke1.Hp()+ "\n ATCK - "+poke1.Ataque()+" PRIORITY - "+ poke1.Prioridade());
 			System.out.println("Treinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			int acao1 = scanner.nextInt();
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ tresh.nome() +" esta com o pokemon "+ poke2.Nome() + " com hp "+poke2.Hp()+ " com ataque "+poke2.Ataque()+" prioridade de ataque "+ poke2.Prioridade());
+			System.out.println("Treinador "+ tresh.nome() +" esta com o pokemon "+ poke2.Nome() + " com hp "+poke2.Hp()+ "\n ATCK - "+poke2.Ataque()+"  PRIORITY - "+ poke2.Prioridade());
 			
 			
 			System.out.println("Treinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			int acao2 = scanner.nextInt();
 			
+			System.out.println("------------------------------------------------------------------------------");
 			
 			/*Averiguando se a ação é igual caso contrario é izi*/
 			if(acao1 == acao2) {
@@ -202,7 +205,7 @@ public class rinhaDeGalo {
 		public void action() {
 			Pokemon galoAtacante = atacante.getPokemon();
 			
-			if( !atacado.Defende(galoAtacante.Ataque()) ){
+			if( atacado.Defende(galoAtacante.Ataque()) ){
 				System.out.println("O pokemon foi derrotado pelo "+ galoAtacante.Nome());
 			}else {
 				System.out.println("O pokemon sofreu dano "+ galoAtacante.Ataque() +" pelo "+ galoAtacante.Nome());
@@ -211,7 +214,7 @@ public class rinhaDeGalo {
 		}
 		
 		public String description() {
-			return "Esse é o evento de ataque";
+			return "ATACK EVENT";
 		}
 		
 	}
@@ -229,7 +232,7 @@ public class rinhaDeGalo {
 		}
 		
 		public String description() {
-			return "Esse é o evento de usar item";
+			return "ITEM EVENT";
 		}
 		
 	}
@@ -267,7 +270,7 @@ public class rinhaDeGalo {
 		}
 		
 		public String description() {
-			return "O treinador trocou de pokemon";
+			return "O "+ trocador.nome() +"trocou de pokemon para o"+ trocador.getPokemon().Nome();
 		}
 		
 	}
