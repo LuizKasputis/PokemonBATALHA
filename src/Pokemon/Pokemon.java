@@ -79,7 +79,7 @@ public class Pokemon {
 	
 	public void ListaAtaques() {
 		for(int i=0; i<4; i++) {
-			System.out.println(ataques[i].nome()+" Dano - "+ataques[i].Dano()+ " Prio - "+ ataques[i].nome());
+			System.out.println(ataques[i].nome()+" ATACK - "+ataques[i].Dano()+ " PRIORITY - "+ ataques[i].prioridade());
 		}
 	}
 	
