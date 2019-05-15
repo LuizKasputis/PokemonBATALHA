@@ -248,7 +248,7 @@ public class rinhaDeGalo {
 			
 			if( atacante.turn() ) {
 				if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
-					System.out.println("O pokemon"+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e derrotou "+ galoAtacante.Nome());
+					System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e derrotou "+ galoAtacante.Nome());
 					atacado.MudaTurn(false);
 				}else {
 					System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
