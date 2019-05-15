@@ -87,4 +87,8 @@ public class Treinador {
 	public Pokemon getPokemon() {
 		return pokemons[pokeAtual];
 	}
+	
+	public int Vivos() {
+		return vivos;
+	}
 }
