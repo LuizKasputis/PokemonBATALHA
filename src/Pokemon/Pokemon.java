@@ -28,7 +28,7 @@ public class Pokemon {
 		
 		for(int i=0 ; i < 3 ; i++)
 			nome += nomes[rand.nextInt(23)];
-		
+		nome  = nome.substring(0,1).toUpperCase() + nome.substring(1);
 		return nome;
 	}
 	
@@ -79,12 +79,16 @@ public class Pokemon {
 	
 	public void ListaAtaques() {
 		for(int i=0; i<4; i++) {
-			System.out.println(ataques[i].nome()+" ATACK - "+ataques[i].Dano()+ " PRIORITY - "+ ataques[i].prioridade());
+			System.out.println(i+1+"- "+ataques[i].nome()+" ATACK - "+ataques[i].Dano()+ " PRIORITY - "+ ataques[i].prioridade());
 		}
 	}
 	
 	public int Ataque(int seleciona) {
 		return ataques[seleciona].Dano();
+	}
+	
+	public String NomeAtack(int seleciona) {
+		return ataques[seleciona].nome();
 	}
 	
 	public int Hp() {

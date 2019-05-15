@@ -27,25 +27,25 @@ public class rinhaDeGalo {
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+" Pokemon atual\n"+poke1.Nome() + " HP - "+poke1.Hp() +"\n");
+			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+" Pokemon atual\n"+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
 			poke1.ListaAtaques();
-			System.out.println("Treinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
+			System.out.println("\nTreinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao1 = scanner.nextInt();
 			if(acao1 == 1) {
 				System.out.println("Selecione o ATCK");
 				atack1 = scanner.nextInt();
-				
+				atack1--;
 			}
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+" Pokemon atual\n"+poke2.Nome() + " HP - "+poke2.Hp()+"\n");
+			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+" Pokemon atual\n"+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
 			poke2.ListaAtaques();
-			
-			System.out.println("Treinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
+			System.out.println("\nTreinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao2 = scanner.nextInt();
 			if(acao2 == 1) {
 				System.out.println("Selecione o ATCK");
 				atack2 = scanner.nextInt();
+				atack2--;
 			}
 			
 			System.out.println("------------------------------------------------------------------------------");
@@ -217,11 +217,12 @@ public class rinhaDeGalo {
 		
 		public void action() {
 			Pokemon galoAtacante = atacante.getPokemon();
+			Pokemon galoAtacado = atacado.getPokemon();
 			
 			if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
 				System.out.println("O pokemon foi derrotado pelo "+ galoAtacante.Nome());
 			}else {
-				System.out.println("O pokemon sofreu dano "+ galoAtacante.Ataque(seleciona) +" pelo "+ galoAtacante.Nome());
+				System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
 			}
 			
 		}
