@@ -21,7 +21,7 @@ public class rinhaDeGalo {
 		Controller control = new Controller();
 		int acao1, atack1=0, acao2, atack2=0, troca1=0, troca2=0;
 		
-		while( ash.CheckPokes() && tresh.CheckPokes() ) {
+		while( ash.CheckPokes() && tresh.CheckPokes() && !ash.CheckFuga() && !tresh.CheckFuga()) {
 			Pokemon poke1 = ash.getPokemon();
 			Pokemon poke2 = tresh.getPokemon();
 			ash.MudaTurn(true);
@@ -29,7 +29,7 @@ public class rinhaDeGalo {
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual"+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
+			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual "+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
 			poke1.ListaAtaques();
 			System.out.println("\nTreinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao1 = scanner.nextInt();
@@ -49,7 +49,7 @@ public class rinhaDeGalo {
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
-			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+"\n NUM potions "+ash.numPotions()+" EFECT 40 HP\n Pokemon atual"+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
+			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual "+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
 			poke2.ListaAtaques();
 			System.out.println("\nTreinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
 			acao2 = scanner.nextInt();
@@ -213,10 +213,18 @@ public class rinhaDeGalo {
 			control.run();
 		}
 		
-		if(ash.CheckPokes()) {
-			System.out.println("O treinador "+ ash.nome() +" venceu a partida");
+		if(ash.CheckFuga() || tresh.CheckFuga()) {
+			if(!ash.CheckFuga()) {
+				System.out.println("O treinador "+ ash.nome() +" venceu a partida");
+			}else {
+				System.out.println("O treinador "+ tresh.nome() +" venceu a partida");
+			}
 		}else {
-			System.out.println("O treinador "+ tresh.nome() +" venceu a partida");
+			if(ash.CheckPokes()) {
+				System.out.println("O treinador "+ ash.nome() +" venceu a partida");
+			}else {
+				System.out.println("O treinador "+ tresh.nome() +" venceu a partida");
+			}
 		}
 	}
 	
@@ -240,7 +248,7 @@ public class rinhaDeGalo {
 			
 			if( atacante.turn() ) {
 				if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
-					System.out.println("O pokemon"+galoAtacante.Nome()+" usou o ataque"+galoAtacante.NomeAtack(seleciona)+" e derrotou "+ galoAtacante.Nome());
+					System.out.println("O pokemon"+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e derrotou "+ galoAtacante.Nome());
 					atacado.MudaTurn(false);
 				}else {
 					System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
@@ -286,11 +294,11 @@ public class rinhaDeGalo {
 		}
 		
 		public void action() {
-			System.out.println("RUN FOREST RUNNNNNN");
+			bundao.Fuga();
 		}
 		
 		public String description() {
-			return "Esse é o evento de fugir";
+			return "RUN FOREST RUNNNNNN, treinador "+bundao.nome()+" meteu a fuga";
 		}
 		
 	}
@@ -310,7 +318,7 @@ public class rinhaDeGalo {
 		}
 		
 		public String description() {
-			return "O "+ trocador.nome() +"trocou de pokemon para o "+ trocador.getPokemon().Nome();
+			return "O "+ trocador.nome() +" trocou de pokemon para o "+ trocador.getPokemon().Nome();
 		}
 		
 	}

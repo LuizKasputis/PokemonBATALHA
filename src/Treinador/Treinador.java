@@ -10,11 +10,12 @@ public class Treinador {
 	
 	private int vivos;
 	private int num_pokemons;
-	private Pokemon[] pokemons = new Pokemon[6];
-	private int pokeAtual;
 	private String name;
 	private boolean turn;
+	private boolean fuga;
 	
+	private Pokemon[] pokemons = new Pokemon[6];
+	private int pokeAtual;
 	private Item itens[] = new Item[10];
 	private int itemAtual;
 	
@@ -27,6 +28,7 @@ public class Treinador {
 		this.name= name;
 		this.itemAtual = 9;
 		this.turn = true;
+		this.fuga = false;
 		CriaPokemons();
 		CriaItens();
 	}
@@ -94,6 +96,14 @@ public class Treinador {
 			return true;
 		else
 			return false;
+	}
+	
+	public boolean CheckFuga() {
+		return fuga;
+	}
+	
+	public void Fuga() {
+		this.fuga = true;
 	}
 	
 	public String nome() {
