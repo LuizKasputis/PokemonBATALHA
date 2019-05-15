@@ -50,14 +50,15 @@ public class Treinador {
 	
 	
 	public void trocaPokemon(){
-		pokeAtual++;
+		if(pokeAtual == num_pokemons - 1)
+			pokeAtual = 0;
+		else
+			pokeAtual++;
 		while(pokemons[pokeAtual].Hp() == 0) {
 			pokeAtual++;
-			if(pokeAtual == num_pokemons)
+			if(pokeAtual == num_pokemons - 1)
 				pokeAtual = 0;
 		}
-		if(pokeAtual == num_pokemons)
-			pokeAtual = 0;
 	}
 	
 	public void UsaItem() {
