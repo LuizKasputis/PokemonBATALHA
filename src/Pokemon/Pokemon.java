@@ -98,5 +98,4 @@ public class Pokemon {
 	public int Prioridade() {
 		return prioridade;
 	}
-
 }

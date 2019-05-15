@@ -13,6 +13,7 @@ public class Treinador {
 	private Pokemon[] pokemons = new Pokemon[6];
 	private int pokeAtual;
 	private String name;
+	private boolean turn;
 	
 	private Item itens[] = new Item[10];
 	private int itemAtual;
@@ -24,6 +25,7 @@ public class Treinador {
 		this.pokeAtual = 0;
 		this.vivos = pokemons;
 		this.name= name;
+		this.turn = true;
 		CriaPokemons();
 		CriaItens();
 	}
@@ -91,5 +93,13 @@ public class Treinador {
 	
 	public int Vivos() {
 		return vivos;
+	}
+	
+	public void MudaTurn(boolean turn) {
+		this.turn = turn;
+	}
+	
+	public boolean turn() {
+		return turn;
 	}
 }

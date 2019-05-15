@@ -24,6 +24,8 @@ public class rinhaDeGalo {
 		while( ash.CheckPokes() && tresh.CheckPokes() ) {
 			Pokemon poke1 = ash.getPokemon();
 			Pokemon poke2 = tresh.getPokemon();
+			ash.MudaTurn(true);
+			tresh.MudaTurn(true);
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
@@ -219,10 +221,15 @@ public class rinhaDeGalo {
 			Pokemon galoAtacante = atacante.getPokemon();
 			Pokemon galoAtacado = atacado.getPokemon();
 			
-			if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
-				System.out.println("O pokemon foi derrotado pelo "+ galoAtacante.Nome());
+			if( atacante.turn() ) {
+				if( atacado.Defende(galoAtacante.Ataque(seleciona)) ){
+					System.out.println("O pokemon foi derrotado pelo "+ galoAtacante.Nome());
+					atacado.MudaTurn(false);
+				}else {
+					System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
+				}
 			}else {
-				System.out.println("O pokemon "+galoAtacante.Nome()+" usou o ataque "+galoAtacante.NomeAtack(seleciona)+" e causou "+galoAtacante.Ataque(seleciona)+" de dano no "+ galoAtacado.Nome());
+				System.out.println(galoAtacante.Nome()+" foi derrotado e não fez nenhuma ação esse turno");
 			}
 			
 		}
