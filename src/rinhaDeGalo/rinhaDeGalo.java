@@ -152,7 +152,7 @@ public class rinhaDeGalo {
 					
 				}
 			/*Caso da acão ser prioridade maior q a outra*/
-			}else if(acao1 > acao2) {
+			}else if(acao1 < acao2) {
 				long tm = System.currentTimeMillis();
 				
 				/*AÇÃO DO ASHE*/

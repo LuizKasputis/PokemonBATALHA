@@ -52,8 +52,9 @@ public class Batalha {
 			
 			Treinador ash = new Treinador(numPoke1, treinador1, false);
 			
-			
-			while(true) {
+			/*Aqui acontece a simulação de andar no mapa, a chance de aparecer um pokemon é de 20% quando se está num arbusto*/
+			/*A simulação só acaba quando quando acaba os pokemons do treinador*/
+			while(ash.CheckPokes()) {
 				mapa.printaMapa();
 				
 				System.out.println("Digite seu movimento AWSD");
@@ -63,7 +64,7 @@ public class Batalha {
 				
 				if(mapa.grama()) {
 					Treinador selvagem = new Treinador(1,"", true);
-					System.out.println("Wild pokemon appears! It's "+ selvagem.getPokemon().Nome() );
+					System.out.println("Wild pokemon appears! It's "+ selvagem.getPokemon().Nome()+" with HP -"+selvagem.getPokemon().Hp());
 					rinhaDeGalo selva = new rinhaDeGalo(ash, selvagem);
 					
 					selva.IniciaBatalha();
