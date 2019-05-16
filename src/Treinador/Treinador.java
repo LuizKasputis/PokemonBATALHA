@@ -17,7 +17,7 @@ public class Treinador {
 	
 	private Pokemon[] pokemons = new Pokemon[6];
 	private int pokeAtual;
-	private Item itens[] = new Item[10];
+	private Item itens[] = new Item[15];
 	private int itemAtual;
 	
 	public Treinador(int pokemons, String name, boolean selvagem) {
@@ -27,7 +27,7 @@ public class Treinador {
 		this.pokeAtual = 0;
 		this.vivos = pokemons;
 		this.name= name;
-		this.itemAtual = 0;
+		this.itemAtual = 10;
 		this.turn = true;
 		this.fuga = false;
 		this.selvagem = selvagem;
@@ -37,7 +37,7 @@ public class Treinador {
 	}
 	
 	private void CriaItens() {
-		for(int i=0; i<10; i++)
+		for(int i=0; i<= 10; i++)
 			itens[i] = new Item();
 	}
 	
@@ -74,7 +74,7 @@ public class Treinador {
 	
 	public void listaPokemons() {
 		Pokemon aux;
-		for(int i=0; i<6; i++) {
+		for(int i=0; i<num_pokemons; i++) {
 			aux = pokemons[i];
 			if(aux.Hp() != 0)
 				System.out.println(i+1+"-"+aux.Nome()+" HP - "+aux.Hp());
@@ -83,11 +83,11 @@ public class Treinador {
 	
 	public void UsaItem() {
 		
-		if(itens[itemAtual].checkItem()) {
-			System.out.println("A poção de "+ itens[itemAtual].valorCura() +" hp foi usada ");
+		if(itemAtual > 0 && itens[itemAtual].checkItem()) {
+			System.out.println("O treinador"+ name +" usou a poção poção de "+ itens[itemAtual].valorCura() +" foi usada ");
 			int cura = itens[itemAtual].usarItem();
 			pokemons[pokeAtual].Cura(cura);
-			itemAtual++;
+			itemAtual--;
 		}else {
 			System.out.println("Não existem poções suficientes ");
 		}
@@ -130,7 +130,7 @@ public class Treinador {
 	}
 	
 	public int numPotions() {
-		return itemAtual+1;
+		return itemAtual;
 	}
 	
 	public boolean selvagem() {

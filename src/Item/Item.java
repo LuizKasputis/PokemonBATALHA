@@ -1,6 +1,5 @@
 package Item;
 
-
 public class Item {
 	private int cura;
 	private boolean usado;
