@@ -29,6 +29,7 @@ public class Pokemon {
 		for(int i=0 ; i < 3 ; i++)
 			nome += nomes[rand.nextInt(23)];
 		nome  = nome.substring(0,1).toUpperCase() + nome.substring(1);
+		
 		return nome;
 	}
 	

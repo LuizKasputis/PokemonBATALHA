@@ -31,8 +31,8 @@ public class Batalha {
 			numPoke2 = scanner.nextInt();
 			
 			
-			Treinador p1 = new Treinador(numPoke1, treinador1);
-			Treinador p2 = new Treinador(numPoke2, treinador2);
+			Treinador p1 = new Treinador(numPoke1, treinador1, false);
+			Treinador p2 = new Treinador(numPoke2, treinador2, false);
 			
 			rinhaDeGalo p = new rinhaDeGalo(p1, p2);
 			
@@ -50,7 +50,7 @@ public class Batalha {
 			System.out.println("Num de pokemons do treinador "+ treinador1);
 			numPoke1 = scanner.nextInt();
 			
-			Treinador ash = new Treinador(numPoke1, treinador1);
+			Treinador ash = new Treinador(numPoke1, treinador1, false);
 			
 			
 			while(true) {
@@ -62,8 +62,8 @@ public class Batalha {
 				mapa.Andar(aux);
 				
 				if(mapa.grama()) {
-					Treinador selvagem = new Treinador(1,"");
-					
+					Treinador selvagem = new Treinador(1,"", true);
+					System.out.println("Wild pokemon appears! It's "+ selvagem.getPokemon().Nome() );
 					rinhaDeGalo selva = new rinhaDeGalo(ash, selvagem);
 					
 					selva.IniciaBatalha();

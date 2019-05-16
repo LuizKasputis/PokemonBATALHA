@@ -13,13 +13,14 @@ public class Treinador {
 	private String name;
 	private boolean turn;
 	private boolean fuga;
+	private boolean selvagem;
 	
 	private Pokemon[] pokemons = new Pokemon[6];
 	private int pokeAtual;
 	private Item itens[] = new Item[10];
 	private int itemAtual;
 	
-	public Treinador(int pokemons, String name) {
+	public Treinador(int pokemons, String name, boolean selvagem) {
 		if(num_pokemons > 6)
 			return;
 		this.num_pokemons = pokemons;
@@ -29,6 +30,8 @@ public class Treinador {
 		this.itemAtual = 9;
 		this.turn = true;
 		this.fuga = false;
+		this.selvagem = selvagem;
+		
 		CriaPokemons();
 		CriaItens();
 	}
@@ -128,5 +131,9 @@ public class Treinador {
 	
 	public int numPotions() {
 		return itemAtual+1;
+	}
+	
+	public boolean selvagem() {
+		return selvagem;
 	}
 }

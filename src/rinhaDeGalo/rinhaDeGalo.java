@@ -1,5 +1,6 @@
 package rinhaDeGalo;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import Controller.Controller;
@@ -17,6 +18,8 @@ public class rinhaDeGalo {
 	}
 	
 	public void IniciaBatalha() {
+		
+		Random rand = new Random();
 		Scanner scanner = new Scanner(System.in);
 		Controller control = new Controller();
 		int acao1, atack1=0, acao2, atack2=0, troca1=0, troca2=0;
@@ -32,40 +35,48 @@ public class rinhaDeGalo {
 			System.out.println("Treinador "+ ash.nome() +" POKEMONS VIVOS "+ash.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual "+poke1.Nome() + " HP - "+poke1.Hp() +"\n                    ATACKS");
 			poke1.ListaAtaques();
 			System.out.println("\nTreinador "+ ash.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
-			acao1 = scanner.nextInt();
+			
+			acao1 = acao();
 			
 			if(acao1 == 1) {
 				System.out.println("Selecione o ATCK");
-				atack1 = scanner.nextInt();
+				atack1 = atack();
 				atack1--;
 			}
 			
 			if(acao1 == 2) {
 				ash.listaPokemons();
 				System.out.println("Selecione o Pokemon");
-				troca1 = scanner.nextInt();
+				troca1 = troca();
 				troca1--;
 			}
 			
 			System.out.println("------------------------------------------------------------------------------");
-			
-			System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual "+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
-			poke2.ListaAtaques();
-			System.out.println("\nTreinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
-			acao2 = scanner.nextInt();
-			
-			if(acao2 == 1) {
-				System.out.println("Selecione o ATCK");
-				atack2 = scanner.nextInt();
-				atack2--;
+			if( !tresh.selvagem() ) {
+				
+				System.out.println("Treinador "+ tresh.nome() +" POKEMONS VIVOS "+tresh.Vivos()+"\nNUM potions "+ash.numPotions()+" EFECT 40 HP\nPokemon atual "+poke2.Nome() + " HP - "+poke2.Hp()+"\n                    ATACKS");
+				poke2.ListaAtaques();
+				System.out.println("\nTreinador "+ tresh.nome() +", digite uma acao: 1- Ataque, 2-Troca Pokemon, 3-Fugir da batalha, 4-Usar Poção");
+				acao2 = acao();
+				
+				if(acao2 == 1) {
+					System.out.println("Selecione o ATCK");
+					atack2 = atack();
+					atack2--;
+				}
+				
+				if(acao2 == 2) {
+					tresh.listaPokemons();
+					System.out.println("Selecione o Pokemon");
+					troca2 = troca();
+					troca2--;
+				}
+				
+			}else {
+				acao2 = 1;
+				atack2 = rand.nextInt(4);
 			}
 			
-			if(acao2 == 2) {
-				tresh.listaPokemons();
-				System.out.println("Selecione o Pokemon");
-				troca2 = scanner.nextInt();
-				troca2--;
-			}
 			
 			System.out.println("------------------------------------------------------------------------------");
 			
@@ -321,5 +332,44 @@ public class rinhaDeGalo {
 			return "O "+ trocador.nome() +" trocou de pokemon para o "+ trocador.getPokemon().Nome();
 		}
 		
+	}
+	
+	public int acao() {
+		int acao1;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			acao1 = scanner.next().charAt(0);
+			if(acao1 <= '4' && acao1 >= '1')
+				return acao1 - '0';
+			else
+				System.out.println("ACAO INVALIDA REPITA O COMANDO");
+		}
+	}
+	
+	public int atack() {
+		int acao1;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			acao1 = scanner.next().charAt(0);
+			if(acao1 <= '4' && acao1 >= '1')
+				return acao1 - '0';
+			else
+				System.out.println("ACAO INVALIDA REPITA O COMANDO");
+		}
+	}
+	
+	public int troca() {
+		int acao1;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			acao1 = scanner.next().charAt(0);
+			if(acao1 <= 6 && acao1 >= 1)
+				return acao1 - '0';
+			else
+				System.out.println("ACAO INVALIDA REPITA O COMANDO");
+		}
 	}
 }
