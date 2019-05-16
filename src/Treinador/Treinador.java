@@ -136,4 +136,9 @@ public class Treinador {
 	public boolean selvagem() {
 		return selvagem;
 	}
+	
+	public int numPokes() {
+		return num_pokemons;
+	}
+	
 }
