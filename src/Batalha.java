@@ -2,6 +2,7 @@
 import java.util.Scanner;
 import Controller.Controller;
 import Event.Event;
+import Mapa.Mapa;
 import Pokemon.Pokemon;
 import Treinador.Treinador;
 import rinhaDeGalo.rinhaDeGalo;
@@ -38,7 +39,12 @@ public class Batalha {
 			p.IniciaBatalha();
 		
 		}else if(acao == 2) {
-			
+			Mapa mapa = new Mapa();
+			while(true) {
+				mapa.printaMapa();
+				char aux= scanner.next().charAt(0);
+				mapa.Andar(aux);
+			}
 		}else {
 			System.out.println("Acao invalida");
 		}
