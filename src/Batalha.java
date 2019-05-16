@@ -40,10 +40,35 @@ public class Batalha {
 		
 		}else if(acao == 2) {
 			Mapa mapa = new Mapa();
+			
+			/*Criando Treinador*/
+			String treinador1;
+			int numPoke1;
+			
+			System.out.println("Digite o nome do primeiro treinador");
+			treinador1 = scanner.next();
+			System.out.println("Num de pokemons do treinador "+ treinador1);
+			numPoke1 = scanner.nextInt();
+			
+			Treinador ash = new Treinador(numPoke1, treinador1);
+			
+			
 			while(true) {
 				mapa.printaMapa();
+				
+				System.out.println("Digite seu movimento AWSD");
+				
 				char aux= scanner.next().charAt(0);
 				mapa.Andar(aux);
+				
+				if(mapa.grama()) {
+					Treinador selvagem = new Treinador(1,"");
+					
+					rinhaDeGalo selva = new rinhaDeGalo(ash, selvagem);
+					
+					selva.IniciaBatalha();
+					
+				}
 			}
 		}else {
 			System.out.println("Acao invalida");

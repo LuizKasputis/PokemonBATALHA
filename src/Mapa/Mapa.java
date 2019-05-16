@@ -37,7 +37,7 @@ public class Mapa {
 	
 	public void Andar(char mov) {
 		if(mov == 'w' || mov == 'W') {
-			if(nowL - 1 > 0) {
+			if(nowL - 1 >= 0) {
 				mapa[nowL][nowC] = before;
 				nowL--;
 				before = mapa[nowL][nowC];
@@ -61,7 +61,7 @@ public class Mapa {
 			}
 			return;
 		}else if(mov == 'a' || mov == 'A'){
-			if(nowC - 1 > 0) {
+			if(nowC - 1 >= 0) {
 				mapa[nowL][nowC] = before;
 				nowC--;
 				before = mapa[nowL][nowC];
@@ -72,4 +72,17 @@ public class Mapa {
 		
 		System.out.println("Movimento invalido");
 	}
+	
+	public boolean grama() {
+		if(before == '#') {
+			int aux = rand.nextInt(100);
+			if(aux < 20) {
+				return true;
+			}
+			return false;
+		}else {
+			return false;
+		}
+	}
+	
 }
