@@ -289,7 +289,7 @@ public class rinhaDeGalo {
 		}
 		
 		public String description() {
-			return "ITEM EVENT";
+			return "EVENT item";
 		}
 		
 	}
@@ -366,7 +366,7 @@ public class rinhaDeGalo {
 		
 		while(true) {
 			acao1 = scanner.next().charAt(0);
-			if(acao1 <= 6 && acao1 >= 1)
+			if(acao1 <= '6' && acao1 >= '1')
 				return acao1 - '0';
 			else
 				System.out.println("ACAO INVALIDA REPITA O COMANDO");

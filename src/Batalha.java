@@ -23,12 +23,12 @@ public class Batalha {
 			System.out.println("Digite o nome do primeiro treinador");
 			treinador1 = scanner.next();
 			System.out.println("Num de pokemons do treinador "+ treinador1);
-			numPoke1 = scanner.nextInt();
+			numPoke1 = numPokes();
 			
 			System.out.println("Digite o nome do treinador");
 			treinador2 = scanner.next();
 			System.out.println("Num de pokemons do treinador "+ treinador2);
-			numPoke2 = scanner.nextInt();
+			numPoke2 = numPokes();
 			
 			
 			Treinador p1 = new Treinador(numPoke1, treinador1, false);
@@ -75,4 +75,19 @@ public class Batalha {
 			System.out.println("Acao invalida");
 		}
 	}
+	
+	
+	public static int numPokes(){
+		int acao1;
+		Scanner scanner = new Scanner(System.in);
+		
+		while(true) {
+			acao1 = scanner.next().charAt(0);
+			if(acao1 <= '6' && acao1 >= '1')
+				return acao1 - '0';
+			else
+				System.out.println("ACAO INVALIDA REPITA O COMANDO");
+		}
+	}
+	
 }

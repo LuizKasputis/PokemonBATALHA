@@ -27,7 +27,7 @@ public class Treinador {
 		this.pokeAtual = 0;
 		this.vivos = pokemons;
 		this.name= name;
-		this.itemAtual = 9;
+		this.itemAtual = 0;
 		this.turn = true;
 		this.fuga = false;
 		this.selvagem = selvagem;

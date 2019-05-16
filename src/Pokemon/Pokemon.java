@@ -2,7 +2,6 @@ package Pokemon;
 
 import java.util.Random;
 
-import rinhaDeGalo.rinhaDeGalo.ataque;
 
 public class Pokemon {
 	Random rand = new Random();

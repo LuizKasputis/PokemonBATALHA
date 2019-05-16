@@ -1,9 +1,7 @@
 package Item;
 
-import java.util.Random;
 
 public class Item {
-	Random rand = new Random();
 	private int cura;
 	private boolean usado;
 	
